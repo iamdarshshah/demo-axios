@@ -1,0 +1,13 @@
+/node_modules
+.prettierrc
+package.json
+package-lock.json
+/build
+
+.DS_Store
+.eve.local
+.eve.development.local
+.eve.test.local
+.eve.production.local
+
+npm-debug.log*

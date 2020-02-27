@@ -14,8 +14,8 @@ class Blog extends Component {
           <nav>
             <ul>
               <li>
-                <NavLink to="/" exact>
-                  Home
+                <NavLink to="/posts/" exact>
+                  Posts
                 </NavLink>
               </li>
               <li>
@@ -42,9 +42,8 @@ class Blog extends Component {
           )}
         /> */}
         <Switch>
-          <Route path="/" exact component={Posts} />
           <Route path="/new-post" component={NewPost} />
-          <Route path="/:id" exact component={FullPost} />
+          <Route path="/posts/" component={Posts} />
         </Switch>
       </div>
     );

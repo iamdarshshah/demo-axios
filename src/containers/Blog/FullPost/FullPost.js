@@ -9,10 +9,19 @@ class FullPost extends Component {
   };
 
   componentDidMount() {
+    this.loadData();
+  }
+
+  componentDidUpdate() {
+    this.loadData();
+  }
+
+  loadData() {
     if (this.props.match.params.id) {
       if (
         !this.state.loaded ||
-        (this.state.loaded && this.state.loaded.id !== this.props.id)
+        (this.state.loaded &&
+          this.state.loaded.id !== +this.props.match.params.id)
       ) {
         console.log("FullPost-ID", this.props.match.params.id);
         axios
@@ -28,7 +37,9 @@ class FullPost extends Component {
 
   deletePostHandler = () => {
     axios
-      .delete(`https://jsonplaceholder.typicode.com/posts/${this.props.id}`)
+      .delete(
+        `https://jsonplaceholder.typicode.com/posts/${this.props.match.params.id}`
+      )
       .then(response => {
         console.log(response.data);
       });
@@ -36,7 +47,7 @@ class FullPost extends Component {
 
   render() {
     let post = <p style={{ textAlign: "center" }}>Please select a Post!</p>;
-    if (this.props.id) {
+    if (this.props.match.params.id) {
       post = <p style={{ textAlign: "center" }}>Loading...!</p>;
     }
     if (this.state.loaded) {
